@@ -1,7 +1,7 @@
 # Redes Neurais Convolucionais - LIBRAS 🖐 ✋ ✊ ☝
 
-## **Projeto de Reconhecimento de Gestos em LIBRAS**
-Este projeto utiliza Redes Neurais Convolucionais (CNNs) para reconhecer gestos do alfabeto em Língua Brasileira de Sinais (LIBRAS). O objetivo é criar um classificador que possa ser usado em tempo real para identificar letras da LIBRAS capturadas por uma câmera.
+## **Projeto de Reconhecimento de Gestos em LIBRAS com Óculos Automatizado**
+Este projeto faz parte de um sistema maior que envolve a construção de um óculos automatizado equipado com câmera e saída de som. O objetivo é traduzir gestos da Língua Brasileira de Sinais (LIBRAS) para áudio de forma offline e o mais próximo possível do tempo real.
 
 <p align="center">
 <img src="demo/demo_cnn_libras.gif" alt="Demonstração do Projeto">
@@ -39,7 +39,7 @@ Além disso, o sistema gera saída de áudio fonético para a letra reconhecida,
     sudo apt-get update
     sudo apt-get install espeak
     ```
-  - Webcam funcional conectada ao sistema.
+  - Webcam funcional conectada ao sistema ou câmera integrada ao óculos.
 
 ---
 
@@ -82,7 +82,7 @@ python main/train.py
 Certifique-se de que o dataset esteja organizado corretamente nas pastas `dataset/training` e `dataset/test`.
 
 ### **2. Execução em Tempo Real**
-Para testar o modelo em tempo real com sua webcam:
+Para testar o modelo em tempo real com sua webcam ou câmera integrada ao óculos:
 ```bash
 python main/app_64x64x3.py
 ```
@@ -138,4 +138,5 @@ python main/app_imgpath.py /caminho/para/imagem.png
 - **Conda**: [Gerenciamento de Ambientes com Conda](https://docs.conda.io/en/latest/)
 
 ---
+
 
