@@ -1,53 +1,141 @@
-# Redes Neurais Convolucionais - LIBRAS :hand: :raised_hand: :fist: :point_up:
----
-<b>Deep Learning & Visão computacional: REDES NEURAIS CONVOLUCIONAIS https://link.medium.com/Jjnt43P0K3</b>  
+# Redes Neurais Convolucionais - LIBRAS 🖐 ✋ ✊ ☝
 
+## **Projeto de Reconhecimento de Gestos em LIBRAS**
+Este projeto utiliza Redes Neurais Convolucionais (CNNs) para reconhecer gestos do alfabeto em Língua Brasileira de Sinais (LIBRAS). O objetivo é criar um classificador que possa ser usado em tempo real para identificar letras da LIBRAS capturadas por uma câmera.
 
 <p align="center">
-  <img src="demo/demo_cnn_libras.gif">
+<img src="demo/demo_cnn_libras.gif" alt="Demonstração do Projeto">
 </p>
 
 ---
 
-Esse projeto tem como objetivo gerar um classificador com Redes Neurais Convolucionais para reconhecimento de gestos do alfabeto em LIBRAS. 
-
-#Deep Learning #LIBRAS #InteligenciaArtificial #CNN #Python3 <br> <br>
+## **Objetivo**
+O projeto implementa uma arquitetura CNN para reconhecer gestos das letras do alfabeto em LIBRAS. A arquitetura segue o padrão:
 
 ```
-INPUT => CONV => POOL => CONV => POOL => CONV => POOL => FC => FC => OUTPUT 
+INPUT => CONV => POOL => CONV => POOL => CONV => POOL => FC => FC => OUTPUT
 ```
 
-#### Requisitos
+Além disso, o sistema gera saída de áudio fonético para a letra reconhecida, permitindo feedback imediato ao usuário.
 
-> conda env create -f environment.yml 
+---
 
-#### Execução
-> conda activate cnn_libras  
-> python app_64x64x1.py 
+## **Requisitos**
 
-#### Estrutura dos arquivos
+### **Dependências de Software**
+- Python 3.9+
+- Conda ou Miniconda (para gerenciamento de ambiente virtual)
+- Bibliotecas Python:
+  - TensorFlow 2.x
+  - OpenCV
+  - NumPy
+  - pyttsx3 (para texto para fala)
+  - Outras dependências listadas no arquivo `environment.yml`.
 
-> Dataset/ - Contem o dataset e scripts para gerar novas imagens <br>
-> Main/ <br>
->> cnn/ <br>
->>> __ init __.py  - Estrutura das camadas da CNN <br>
->> train.py  - Execução de treinamento importando a estrutura da cnn. <br>
->> app.py - Teste do modelo para reconhecimento em real-time com OpenCV e o modelo de CNN treinado.<br>
-<br>
+### **Dependências de Sistema**
+- **Linux/Mac/Windows**: Certifique-se de que os seguintes pacotes estão instalados no seu sistema:
+  - `espeak` (para reprodução de áudio):
+    ```bash
+    sudo apt-get update
+    sudo apt-get install espeak
+    ```
+  - Webcam funcional conectada ao sistema.
 
-> Models/ - Contem graficos, imagens de modelos e modelos treinados <br> 
+---
 
-> logs/  - Logs de execução com informações de epocas, validação e sumario <br> 
+## **Instalação**
 
-<br>
+### **1. Clone o Repositório**
+Clone o repositório para o seu ambiente local:
+```bash
+git clone https://github.com/seu_usuario/nome_do_repositorio.git
+cd nome_do_repositorio
+```
 
+### **2. Crie o Ambiente Virtual**
+Use o arquivo `environment.yml` para criar o ambiente virtual com todas as dependências necessárias:
+```bash
+conda env create -f environment.yml
+```
 
-#### Referências
+### **3. Ative o Ambiente**
+Ative o ambiente virtual criado:
+```bash
+conda activate cnn_libras
+```
 
-CNN: http://cs231n.github.io/convolutional-networks/ 
+### **4. Instale Dependências Adicionais**
+Se necessário, instale pacotes adicionais fora do `environment.yml` (por exemplo, `espeak` no Linux):
+```bash
+sudo apt-get install espeak
+```
 
-Documentação Keras: https://keras.io/
+---
 
---- 
-@Author: [Lucas Lacerda](https://www.linkedin.com/in/lucaaslb/)  :beer: :pizza:
+## **Execução**
+
+### **1. Treinamento do Modelo**
+Para treinar o modelo usando o dataset fornecido:
+```bash
+python main/train.py
+```
+Certifique-se de que o dataset esteja organizado corretamente nas pastas `dataset/training` e `dataset/test`.
+
+### **2. Execução em Tempo Real**
+Para testar o modelo em tempo real com sua webcam:
+```bash
+python main/app_64x64x3.py
+```
+O sistema exibirá a imagem capturada pela câmera.
+Quando uma letra for reconhecida, o som fonético será emitido automaticamente.
+
+### **3. Teste com Imagens Estáticas**
+Você também pode testar o modelo com imagens estáticas:
+```bash
+python main/app_imgpath.py /caminho/para/imagem.png
+```
+
+---
+
+## **Estrutura do Projeto**
+
+```
+├── dataset/               # Dataset e scripts para processamento de imagens
+│   ├── pre-processed/     # Imagens pré-processadas (treinamento e teste)
+│   ├── training/          # Dataset de treinamento
+│   ├── test/              # Dataset de teste
+│   ├── resize_img.py      # Script para redimensionar imagens
+│   └── capture.py         # Script para capturar imagens da câmera
+├── demo/                  # Demonstração do projeto (GIFs, vídeos, etc.)
+├── logs/                  # Logs de execução (histórico de treinamento, etc.)
+├── main/                  # Código principal do projeto
+│   ├── cnn/               # Implementação da CNN
+│   │   └── __init__.py    # Definição da arquitetura da CNN
+│   ├── train.py           # Script para treinar o modelo
+│   ├── app_64x64x3.py     # Script para reconhecimento em tempo real
+│   └── app_imgpath.py     # Script para reconhecimento com imagens estáticas
+├── models/                # Modelos treinados e gráficos
+│   ├── graphics/          # Gráficos gerados durante o treinamento
+│   ├── image/             # Representações visuais da arquitetura da CNN
+│   └── model_epoch_61.h5  # Exemplo de modelo treinado
+├── temp/                  # Arquivos temporários (imagens capturadas pela câmera)
+├── environment.yml        # Arquivo para criar o ambiente Conda
+└── README.md              # Este arquivo
+```
+
+---
+
+## **Referências**
+
+### **Documentação e Tutoriais**
+- **Arquitetura CNN**: [CS231n - Convolutional Neural Networks](http://cs231n.stanford.edu/)
+- **Keras**: [Documentação Oficial do Keras](https://keras.io/)
+- **TensorFlow**: [Documentação Oficial do TensorFlow](https://www.tensorflow.org/)
+
+### **Ferramentas Usadas**
+- **OpenCV**: [Documentação Oficial do OpenCV](https://opencv.org/)
+- **pyttsx3**: [Texto para Fala em Python](https://pyttsx3.readthedocs.io/en/latest/)
+- **Conda**: [Gerenciamento de Ambientes com Conda](https://docs.conda.io/en/latest/)
+
+---
 
