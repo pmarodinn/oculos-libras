@@ -3,10 +3,6 @@
 ## **Projeto de Reconhecimento de Gestos em LIBRAS com Óculos Automatizado**
 Este projeto faz parte de um sistema maior que envolve a construção de um óculos automatizado equipado com câmera e saída de som. O objetivo é traduzir gestos da Língua Brasileira de Sinais (LIBRAS) para áudio de forma offline e o mais próximo possível do tempo real.
 
-<p align="center">
-<img src="demo/demo_cnn_libras.gif" alt="Demonstração do Projeto">
-</p>
-
 ---
 
 ## **Objetivo**
